@@ -25,25 +25,27 @@ const refs = {
   input: document.querySelector('#filter'),
 };
 
-refs.input.addEventListener('input', _.debounce(onFilterChange, 300));
+// refs.input.addEventListener('input', onFilterChange);
+// refs.input.addEventListener('input', _.throttle(onFilterChange, 300));
+refs.input.addEventListener('input', _.debounce(onFilterChange, 3000));
 
-const listItemsMarkup = createListItemsMarkup(tech);
-populateList(listItemsMarkup);
+const listItemMarkup = createListItemMarkup(tech);
+populateList(listItemMarkup);
 
-function createListItemsMarkup(items) {
-  return items.map(item => `<li>${item.label}</li>`).join('');
+function createListItemMarkup(item) {
+  return item.map(item => `<li>${item.label}</li>`).join('');
 }
 
 function onFilterChange(evt) {
-  console.log('INPUT');
+  console.log('INPUP');
   const filter = evt.target.value.toLowerCase();
 
-  const filteredItems = tech.filter(t =>
+  const filterredItems = tech.filter(t =>
     t.label.toLowerCase().includes(filter),
   );
 
-  const listItemsMarkup = createListItemsMarkup(filteredItems);
-  populateList(listItemsMarkup);
+  const listItemMarkup = createListItemMarkup(filterredItems);
+  populateList(listItemMarkup);
 }
 
 function populateList(markup) {

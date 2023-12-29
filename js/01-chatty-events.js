@@ -9,7 +9,8 @@
 const coordsOutputRef = document.querySelector('.js-coords');
 let mouseMoveCbInvocationCounter = 0;
 
-// window.addEventListener('mousemove', _.throttle(onMouseMove, 300));
+window.addEventListener('mousemove', _.throttle(onMouseMove, 300));
+// window.addEventListener('mousemove', onMouseMove);
 
 function onMouseMove(event) {
   mouseMoveCbInvocationCounter += 1;
